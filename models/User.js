@@ -20,12 +20,17 @@ const userSchema = new Schema(
             type:Schema.Types.ObjectId,
             ref:'Thought'
         }],
-        Friends:[{
+        friends:[{
             type:Schema.Types.ObjectId,
             ref:'User'
         }],
     }
+);    
     // Create a virtual called friendCount that retrieves the length of the user's friends array field on query.
-);
+userSchema.virtual('friendCount').get(function() {
+    return ` ${this.friends.length}`;
+});
 
-module.exports = userSchema;
+const User = model('user', userSchema);
+
+module.exports = User;
