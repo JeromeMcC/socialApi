@@ -7,7 +7,10 @@ module.exports = {
   getThoughts(req, res) {
     Thought.find()
       .then(thoughts => res.send(thoughts))
-      .catch((err) => res.status(500).json(err));
+      .catch((err) => {
+        console.log(err)
+        return res.status(500).json(err)
+      })
   },
 
   getSingleThought(req, res) {
