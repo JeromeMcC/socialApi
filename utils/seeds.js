@@ -20,6 +20,7 @@ connection.once("open", async () => {
   await Thought.collection.insertMany(thoughts);
 
   console.table(users);
+  console.table(thoughts);
   console.info("Seeding done.");
   process.exit(0);
 });

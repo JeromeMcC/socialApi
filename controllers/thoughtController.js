@@ -6,7 +6,7 @@ module.exports = {
   
   getThoughts(req, res) {
     Thought.find()
-      .then((thoughts) => res.json(thoughts))
+      .then(thoughts => res.send(thoughts))
       .catch((err) => res.status(500).json(err));
   },
 
@@ -15,7 +15,7 @@ module.exports = {
       .select("-__v")
       .then(async (thought) =>
         !thought
-          ? res.status(404).json({ message: "No thought found with that ID" })
+          ? res.status(404).json({ message: "No thought found" })
           : res.json({
               thought,
             })
