@@ -56,7 +56,7 @@ module.exports = {
               message: "Thought created, but no user found with that ID",
             })
           : res.json(
-              "Created the thought and added the thought to the user successfully."
+              "thought created and added to the user successfully."
             )
       )
       .catch((err) => {
@@ -89,7 +89,7 @@ module.exports = {
       .then((thought) =>
         !thought
           ? res.status(404).json({
-              message: "No thought found with this ID. Please try again.",
+              message: "No thought found with this ID.",
             })
           : res.json(thought)
       )
